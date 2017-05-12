@@ -7,6 +7,7 @@ main section.categories-show {
     flex-wrap:       wrap;
     justify-content: space-around;
 
+
     .product {
       // flex:      1;
       max-width: 260px;
@@ -15,10 +16,33 @@ main section.categories-show {
 
       border:        1px solid #ccc;
       border-radius: 5px;
-      padding:       15px;
       padding-bottom: 80px;
       margin-top:    20px;
+      padding-top:   40px;
       // margin:        10px;
+
+      .sold_out_tag {
+
+        position: absolute;
+        color: white;
+        top: 0;
+        left: 0;
+        padding: 10px;
+        background-color: red;
+        border-top-left-radius: 4px;
+        border-bottom-right-radius: 20px;
+        font-size: 0.8em;
+
+
+      }
+
+      .product_heading {
+        text-align: center;
+      }
+      .description {
+        padding: 15px;
+      }
+
 
       header img {
         max-width: 100%;
