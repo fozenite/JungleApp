@@ -5,17 +5,21 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
 
+
   resource :cart, only: [:show] do
     put    :add_item
     delete :remove_item
   end
 
-  resources :orders, only: [:create, :show]
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
 
+  resources :orders, only: [:create, :show]
+  resources :users
   namespace :admin do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]
-
     resources :categories, except: [:edit, :update, :show]
   end
 

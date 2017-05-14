@@ -1,3 +1,5 @@
+<%= csrf_meta_tags %>
+
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -45,6 +47,28 @@
             <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
           <% end %>
         </li>
+
+        <li>
+          <%= link_to new_user_path do %>
+            <%= fa_icon "plus" %> Register
+          <% end %>
+        </li>
+
+
+        <% if logged_in? %>
+        <li>
+            <%= link_to logout_path, method: :delete  do%>
+              <%= fa_icon "key" %> Logout
+            <% end %>
+        </li>
+        <% else %>
+          <li>
+            <%= link_to login_path do %>
+            <%= fa_icon "key" %> Login
+            <% end %>
+          </li>
+        <% end %>
+
       </ul>
     </div>
   </div>
