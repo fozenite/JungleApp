@@ -2,9 +2,9 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @currentUser = current_user
     @line_items = LineItem.where("order_id = #{@order.id}")
-
+    @currentUser = current_user
+    UserMailer.welcome_email(@line_items, current_user, @order.id).deliver_now
 
   end
 
