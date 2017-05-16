@@ -21,7 +21,7 @@ end
 
 # Let's do this ...
 
-## CATEGORIES
+# CATEGORIES
 
 puts "Finding or Creating Categories ..."
 
@@ -131,6 +131,28 @@ cat3.products.create!({
   quantity: 0,
   price: 2_483.75
 })
+
+
+# rating1 = Rating.create!({
+#     product_id: 1,
+#        user_id: 1,
+#    description: 'Nice Shirt!',
+#         rating: 5
+# })
+
+# rating2 = Rating.create!({
+#     product_id: 1,
+#        user_id: 2,
+#    description: 'Horrible Shirt!',
+#         rating: 1
+# })
+
+# rating3 = Rating.create!({
+#     product_id: 1,
+#        user_id: 3,
+#    description: 'Okay Shirt!',
+#         rating: 2
+# })
 
 
 puts "DONE!"

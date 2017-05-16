@@ -6,6 +6,11 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find params[:id]
+    @ratings = Rating.where("product_id = #{@product.id}").order(created_at: :desc)
+    @NewRating = Rating.new
   end
+
+
+
 
 end

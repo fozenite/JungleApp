@@ -27,5 +27,55 @@
     </div>
 
   </article>
+  <% if !@ratings.empty? %>
+  <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>User Email</th>
+          <th colspan="3">Description</th>
+          <th>Rating</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @ratings.each do |rating| %>
+          <tr>
+            <% @userRater = User.find_by(id: rating.user_id) %>
+            <td><%= @userRater.email %></td>
+            <td colspan="3"><%= rating.description %></td>
+            <td><%= rating.rating %><%= fa_icon "star" %></td>
+            <% if(current_user.id == @userRater.id) %>
+            <td><%= link_to fa_icon('trash'), product_rating_path(action: 'destroy', product_id: @product.id, id:rating.id) , class: 'btn btn-sm btn-danger', method: "delete" %>
+            </td>
+            <% else %>
+            <td></td>
+            <% end %>
+          </tr>
+        <% end %>
+  <% else %>
+    <h4>This product hasn't been rated by a user yet</h4>
+
+  <% end %>
+      </tbody>
+
+  </table>
+  <% if logged_in? %>
+    <%= form_for [@product, @NewRating] do |f| %>
+     <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+     </div>
+      <fieldset>
+       <h4>Rating Number</h4>
+       <%= f.select :rating, options_for_select([["Select One", ""], "1", "2", "3", "4", "5"]), :class => 'genForm_dropBox' %>
+       <h4>Comments</h4>
+       <%= f.text_field :description %>
+      </fieldset>
+      <%= f.submit "Rate", class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+
 
 </section>
+

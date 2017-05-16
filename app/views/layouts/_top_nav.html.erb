@@ -54,6 +54,11 @@
               <%= fa_icon "key" %> Logout
             <% end %>
         </li>
+         <li>
+          <%= current_user.first_name %>
+          <%= current_user.last_name %>
+          is logged in
+        </li>
         <% else %>
           <li>
           <%= link_to new_user_path do %>
